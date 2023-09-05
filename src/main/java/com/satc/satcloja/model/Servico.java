@@ -1,9 +1,14 @@
 package com.satc.satcloja.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Servico extends ItemVendavel {
+    @Column(name = "quantidade_horas", nullable = false)
     private Double quantidadeHoras;
 
-
+public Servico(){}
     public Servico(String descricao, Double valorUnitario, Double quantidadeHoras) {
         super.setDescricao(descricao);
         this.quantidadeHoras = quantidadeHoras;

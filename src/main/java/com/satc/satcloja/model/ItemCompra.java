@@ -1,11 +1,22 @@
 package com.satc.satcloja.model;
 
-public class ItemCompra {
+import javax.persistence.*;
+
+@Entity
+public class ItemCompra extends EntityId {
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
     private Produto produto;
+    @Column(name = "valor_unitario")
     private Double valorUnitario;
+    @Column(name = "quantidade")
     private Double quantidade;
+    @Column(name = "desconto")
     private Double desconto;
 
+    @ManyToOne
+    @JoinColumn(name = "compra_id")
+    private Compra compra;
     public ItemCompra(Produto produto, Double valorUnitario, Double quantidade, Double desconto) {
         this.produto = produto;
         this.valorUnitario = valorUnitario;
@@ -49,6 +60,14 @@ public class ItemCompra {
         double valorTotal = this.getValorUnitario() * this.getQuantidade();
         double descontoCalculado = valorTotal * (this.getDesconto() / 100);
         return valorTotal - descontoCalculado;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     @Override

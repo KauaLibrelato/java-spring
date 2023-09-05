@@ -1,7 +1,13 @@
 package com.satc.satcloja.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Fornecedor extends Pessoa{
+    @Column(name = "cnpj", nullable = false)
     private String cnpj;
+    @Column(name = "inscricao_estadual", nullable = false)
     private String inscricaoEstadual;
 
 
