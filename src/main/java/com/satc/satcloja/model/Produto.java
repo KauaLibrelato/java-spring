@@ -1,10 +1,13 @@
 package com.satc.satcloja.model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.time.LocalDate;
 
 @Entity
+@DiscriminatorValue("produto")
 public class Produto extends ItemVendavel {
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
@@ -19,10 +22,8 @@ public class Produto extends ItemVendavel {
 
     private Double precoVenda;
 
-    public Produto(String descricao, String nome) {
-        this.nome = nome;
+    public Produto() {
 
-        super.setDescricao(descricao);
     }
 
     public String getNome() {
